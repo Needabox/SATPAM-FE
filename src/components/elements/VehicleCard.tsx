@@ -11,6 +11,7 @@ type VehicleCardProps = {
 
 const VehicleCard = ({title, image}: VehicleCardProps): ReactElement => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [vehicleType, setVehicleType] = useState<String>("Motor");
     return (
         <>
             <div className="rounded-lg border border-gray-300 px-5 py-2 flex flex-col justify-between gap-2 w-full">
@@ -21,7 +22,7 @@ const VehicleCard = ({title, image}: VehicleCardProps): ReactElement => {
                     <img src={image} alt="" width="100" />
                 </div>
                 <div className="card-footer flex justify-center items-center py-2">
-                    <button onClick={() => setIsOpen(true)} className="bg-blue-900 py-2 px-10 rounded-lg text-center text-white text-sm font-light">Print Ticket</button>
+                    <button onClick={() => {setIsOpen(true), setVehicleType(title)}} className="bg-blue-900 py-2 px-10 rounded-lg text-center text-white text-sm font-light">Print Ticket</button>
                 </div>
             </div>
             <Modal modalTitle={logo} isOpen={isOpen} handleCancelAction={() => setIsOpen(false)} handleConfirmAction={() => alert('Helo')}>
@@ -39,7 +40,7 @@ const VehicleCard = ({title, image}: VehicleCardProps): ReactElement => {
                             <h6>Kendaraan</h6>
                         </div>
                         <div className="col-span-8">
-                            <p>Motor</p>
+                            <p>{vehicleType}</p>
                         </div>
                     </div>
                     <div className="grid grid-cols-12">
