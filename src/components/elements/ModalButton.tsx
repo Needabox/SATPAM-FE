@@ -3,7 +3,7 @@ import { ReactElement, ReactNode } from "react";
 type ModalButtonProps = {
     children: ReactNode,
     className: string,
-    onClick: () => void
+    onClick?: () => void
 }
 
 
