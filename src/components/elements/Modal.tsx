@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 type ModalProps = {
     modalTitle: string,
+    modalFooter?: string,
     children: ReactNode,
     isOpen: boolean,
     handleCancelAction: () => void,
@@ -15,6 +16,7 @@ type ModalProps = {
 
 const Modal = ({
     modalTitle,
+    modalFooter,
     children,
     isOpen,
     handleCancelAction,
@@ -62,11 +64,13 @@ const Modal = ({
                                 {children}
                             </div>
                         </div>
-                        <div className="flex justify-center items-center mt-5">
-                            <ModalButton className='inline-flex justify-center rounded-md bg-blue-900 px-10 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-800' onClick={handleConfirmAction}>
-                                Print Ticket
-                            </ModalButton>
-                        </div>
+                        { modalFooter && ( 
+                            <div className="flex justify-center items-center mt-5">
+                                <ModalButton className='inline-flex justify-center rounded-md bg-blue-900 px-10 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-800' onClick={handleConfirmAction}>
+                                    {modalFooter}
+                                </ModalButton>
+                            </div>
+                        )}
                     </Dialog.Panel>
                 </Transition.Child>
             </div>
